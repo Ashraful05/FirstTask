@@ -8,14 +8,15 @@ use Illuminate\Database\Eloquent\Model;
 class ActivationStatus extends Model
 {
     use HasFactory;
+
     protected $fillable=['name'];
 
-    public function statusMikrotik()
+    public function mikrotiks()
     {
-        return $this->hasMany(Mikrotik::class);
+        return $this->hasMany(Mikrotik::class,'activation_status_id');
     }
-    public function statusOlt()
+    public function olts()
     {
-        return $this->hasMany(Olt::class);
+        return $this->hasMany(Olt::class,'olt_type_id');
     }
 }

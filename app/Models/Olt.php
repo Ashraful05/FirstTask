@@ -10,7 +10,7 @@ class Olt extends Model
     use HasFactory;
     protected $fillable=['username','password','model'];
 
-    public function vendors()
+    public function vendor()
     {
         return $this->belongsTo(Vendor::class);
     }
@@ -18,7 +18,7 @@ class Olt extends Model
     {
         return $this->belongsTo(OltType::class);
     }
-    public function oltStatus()
+    public function activationStatus()
     {
         return $this->belongsTo(ActivationStatus::class);
     }

@@ -10,8 +10,8 @@ class OltType extends Model
     use HasFactory;
     protected $fillable=['name'];
 
-    public function olt()
+    public function olts()
     {
-        return $this->hasOne(Olt::class);
+        return $this->hasMany(Olt::class);
     }
 }

@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Mikrotik;
+use App\Models\Olt;
 use Faker\Factory;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -20,13 +21,13 @@ class OltSeeder extends Seeder
         $faker = Factory::create();
         for($i=1;$i<=5;$i++)
         {
-            Mikrotik::create([
-                'name'=>'DLink',
-                'user_name'=>$faker->firstName,
+            Olt::create([
+                'name'=>$faker->lastName,
+                'username'=>$faker->firstName,
                 'password'=>Hash::make($faker->password),
                 'ip_address'=>$faker->ipv4,
-                'ssh_port'=>$faker->numerify('123-456-789'),
-                'api_port'=>$faker->bothify('12sdfs3'),
+                'port'=>rand(1,65000),
+                'model'=>$faker->word
             ]);
         }
     }

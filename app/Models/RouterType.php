@@ -8,8 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class RouterType extends Model
 {
     use HasFactory;
+
+    protected $fillable=['name'];
+
     public function routers()
     {
-        return $this->hasOne(Mikrotik::class);
+        return $this->hasMany(Mikrotik::class);
     }
 }
