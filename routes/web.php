@@ -1,17 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+use App\Http\Controllers\MikrotikContoller;
+use App\Http\Controllers\OltContoller;
+use App\Http\Controllers\OltTypeContoller;
+use App\Http\Controllers\RouterTypeContoller;
+use App\Http\Controllers\VendorTypeContoller;
 
 Route::get('/', function () {
     return view('welcome');
@@ -20,3 +14,9 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::resource('mikrotik','MikrotikController');
+Route::resource('olt','OltController');
+Route::resource('olttype','OltTypeController');
+Route::resource('routertype','RouterTypeController');
+Route::resource('vendor','VendorController');
