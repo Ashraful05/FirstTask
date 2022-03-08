@@ -13,7 +13,7 @@ class MikrotikContoller extends Controller
      */
     public function index()
     {
-        //
+        return view('backend.mikrotik.mikrotik');
     }
 
     /**
@@ -34,7 +34,7 @@ class MikrotikContoller extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->save()->except(csrf_token());
     }
 
     /**

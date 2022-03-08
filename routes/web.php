@@ -5,7 +5,7 @@ use App\Http\Controllers\MikrotikContoller;
 use App\Http\Controllers\OltContoller;
 use App\Http\Controllers\OltTypeContoller;
 use App\Http\Controllers\RouterTypeContoller;
-use App\Http\Controllers\VendorTypeContoller;
+use App\Http\Controllers\VendorContoller;
 
 Route::get('/', function () {
     return view('welcome');
@@ -15,7 +15,7 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::resource('mikrotik','MikrotikController');
+Route::resource('mikrotik','MikrotikContoller');
 Route::resource('olt','OltController');
 Route::resource('olttype','OltTypeController');
 Route::resource('routertype','RouterTypeController');
