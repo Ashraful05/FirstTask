@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Mikrotik;
+use App\Models\Olt;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
-class OltTypeContoller extends Controller
+class OltController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +16,7 @@ class OltTypeContoller extends Controller
      */
     public function index()
     {
-        //
+       return view('backend.olt.olt');
     }
 
     /**
@@ -34,7 +37,24 @@ class OltTypeContoller extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request,[
+           'name'=>'required|max:64',
+            'username'=>'required|max:64',
+            'password'=>'required|max:64',
+            'ip_address'=>'required|max:64',
+            'model'=>'required|max:128',
+            'port'=>'required|max:11',
+        ]);
+        $olt = new Olt();
+        $olt->name = $request->name;
+        $olt->user_name = $request->user_name;
+        $olt->password = Hash::make($request->password);
+        $olt->model = $request->model;
+        $olt->port = $request->port;
+        $olt->ip_address = $request->ip_address;
+//        $olt->olts()->save($oltType);
+        $olt->save();
+//        return $olt;
     }
 
     /**

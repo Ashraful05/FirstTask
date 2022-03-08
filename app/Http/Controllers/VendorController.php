@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Vendor;
 use Illuminate\Http\Request;
 
-class MikrotikContoller extends Controller
+class VendorController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +14,7 @@ class MikrotikContoller extends Controller
      */
     public function index()
     {
-        return view('backend.mikrotik.mikrotik');
+        return view('backend.vendor.vendor');
     }
 
     /**
@@ -34,7 +35,13 @@ class MikrotikContoller extends Controller
      */
     public function store(Request $request)
     {
-        $request->save()->except(csrf_token());
+        $this->validate($request,[
+           'name'=>'required|max:32'
+        ]);
+        $vendor = new Vendor();
+        $vendor->name = $request->name;
+        $vendor->save();
+        return redirect()->back()->with('message','vendor Info Added Successfully');
     }
 
     /**

@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class OltContoller extends Controller
+class ActivationStatusController extends Controller
 {
     /**
      * Display a listing of the resource.

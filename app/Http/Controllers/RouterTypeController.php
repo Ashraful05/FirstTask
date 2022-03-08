@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\RouterType;
 use Illuminate\Http\Request;
 
-class RouterTypeContoller extends Controller
+class RouterTypeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +14,7 @@ class RouterTypeContoller extends Controller
      */
     public function index()
     {
-        //
+        return view('backend.RouterType.routertype');
     }
 
     /**
@@ -23,7 +24,7 @@ class RouterTypeContoller extends Controller
      */
     public function create()
     {
-        //
+
     }
 
     /**
@@ -34,7 +35,13 @@ class RouterTypeContoller extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request,[
+           'name'=>'required|max:64'
+        ]);
+        $routerType = new RouterType();
+        $routerType->name = $request->name;
+        $routerType->save();
+        return redirect()->back()->with('message','RouterType info added Successfully');
     }
 
     /**

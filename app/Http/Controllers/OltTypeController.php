@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\OltType;
+use App\Models\Vendor;
 use Illuminate\Http\Request;
 
-class ActivationStatusContoller extends Controller
+class OltTypeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +15,7 @@ class ActivationStatusContoller extends Controller
      */
     public function index()
     {
-        //
+        return view('backend.olttypes.olttypes');
     }
 
     /**
@@ -34,7 +36,14 @@ class ActivationStatusContoller extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request,[
+            'name'=>'required|max:32'
+        ]);
+        $oltType = new OltType();
+        $oltType->name = $request->name;
+        $oltType->save();
+//        $oltType->oltType()->associate($olt)->save();
+        return redirect()->back()->with('message','OLT Info Added Successfully');
     }
 
     /**

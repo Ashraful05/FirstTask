@@ -6,7 +6,7 @@
             {{ Session::get('message') }}
         </div>
     @endif
-    <form action="{{ route('mikrotik.store') }}" method="post">
+    <form action="{{ route('olt.store') }}" method="post">
         @csrf
         <div class="form-group">
             <label for="exampleInputEmail1">Name</label>
@@ -24,16 +24,21 @@
             <span class="text-center text-danger">{{$errors->has('password')?$errors->first('password') : ''}}</span>
         </div>
         <div class="form-group">
-            <label for="exampleInputPassword1">SSH Port</label>
-            <input type="number" name="ssh_port" class="form-control" id="exampleInputPassword1" placeholder="">
-            <span class="text-center text-danger">{{$errors->has('ssh_port')?$errors->first('ssh_port') : ''}}</span>
+            <label for="exampleInputPassword1">Model</label>
+            <input type="number" name="model" class="form-control" id="exampleInputPassword1" placeholder="">
+            <span class="text-center text-danger">{{$errors->has('model')?$errors->first('model') : ''}}</span>
         </div>
         <div class="form-group">
-            <label for="exampleInputPassword1">API Port</label>
-            <input type="number" name="api_port" class="form-control" id="exampleInputPassword1" placeholder="">
-            <span class="text-center text-danger">{{$errors->has('api_port')?$errors->first('api_port') : ''}}</span>
+            <label for="exampleInputPassword1">Port</label>
+            <input type="number" name="port" class="form-control" id="exampleInputPassword1" placeholder="">
+            <span class="text-center text-danger">{{$errors->has('port')?$errors->first('port') : ''}}</span>
         </div>
-        <button type="submit" class="btn btn-primary">Add Info</button>
+        <div class="form-group">
+            <label for="exampleInputPassword1">IP Address</label>
+            <input type="text" name="ip_address" class="form-control" id="exampleInputPassword1" placeholder="">
+            <span class="text-center text-danger">{{$errors->has('ip_address')?$errors->first('ip_address') : ''}}</span>
+        </div>
+        <button type="submit" class="btn btn-primary">Add OLT Info</button>
     </form>
 
 @endsection

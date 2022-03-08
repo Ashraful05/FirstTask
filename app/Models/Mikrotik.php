@@ -24,4 +24,6 @@ class Mikrotik extends Model
 //    {
 //        return $this->belongsTo(ActivationStatus::class);
 //    }
+
+
 }

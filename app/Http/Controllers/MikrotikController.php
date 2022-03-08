@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Mikrotik;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
-class VendorContoller extends Controller
+class MikrotikController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +15,8 @@ class VendorContoller extends Controller
      */
     public function index()
     {
-        //
+//        dd('hi');
+        return view('backend.mikrotik.mikrotik');
     }
 
     /**
@@ -34,7 +37,25 @@ class VendorContoller extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request,[
+           'name'=>'required|max:64',
+           'user_name'=>'required|max:64',
+           'password'=>'required|max:64',
+            'ip_address'=>'required|max:15',
+            'ssh_port'=>'required',
+            'api_port'=>'required',
+        ]);
+       $mikrotik = new Mikrotik();
+       $mikrotik->name = $request->name;
+       $mikrotik->user_name = $request->user_name;
+       $mikrotik->password = Hash::make($request->password);
+       $mikrotik->ssh_port = $request->ssh_port;
+       $mikrotik->api_port = $request->api_port;
+       $mikrotik->ip_address = $request->ip_address;
+       $mikrotik->save();
+//       return $mikrotik;
+//       dd($result);
+       return redirect()->back()->with('message','Mikrotik Info saved successfully!!');
     }
 
     /**
