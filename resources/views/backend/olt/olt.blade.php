@@ -15,8 +15,8 @@
         </div>
         <div class="form-group">
             <label for="exampleInputPassword1">UserName</label>
-            <input type="text" name="user_name" class="form-control" id="exampleInputPassword1" placeholder="">
-            <span class="text-center text-danger">{{$errors->has('user_name')?$errors->first('user_name') : ''}}</span>
+            <input type="text" name="username" class="form-control" id="exampleInputPassword1" placeholder="">
+            <span class="text-center text-danger">{{$errors->has('username')?$errors->first('username') : ''}}</span>
         </div>
         <div class="form-group">
             <label for="exampleInputPassword1">Password</label>

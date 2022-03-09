@@ -52,7 +52,8 @@ class RouterTypeController extends Controller
      */
     public function show($id)
     {
-        //
+        $routerTypes = RouterType::all();
+        return view('backend.RouterType.routertypeview',['routerTypes'=>$routerTypes]);
     }
 
     /**

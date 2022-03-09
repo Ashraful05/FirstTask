@@ -52,7 +52,8 @@ class VendorController extends Controller
      */
     public function show($id)
     {
-        //
+        $vendors = Vendor::all();
+        return view('backend.vendor.vendorview',['vendors'=>$vendors]);
     }
 
     /**
@@ -63,7 +64,8 @@ class VendorController extends Controller
      */
     public function edit($id)
     {
-        //
+        $edit = Vendor::findOrFail($id);
+        return view('backend.vendor.vendorview',['edit'=>$edit]);
     }
 
     /**

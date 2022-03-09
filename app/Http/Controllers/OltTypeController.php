@@ -15,7 +15,8 @@ class OltTypeController extends Controller
      */
     public function index()
     {
-        return view('backend.olttypes.olttypes');
+        $oltTypes = OltType::all();
+        return view('backend.olttypes.olttype_view',compact('oltTypes'));
     }
 
     /**
@@ -25,7 +26,7 @@ class OltTypeController extends Controller
      */
     public function create()
     {
-        //
+        return view('backend.olttypes.olttypes');
     }
 
     /**
@@ -54,7 +55,8 @@ class OltTypeController extends Controller
      */
     public function show($id)
     {
-        //
+        $oltType = OltType::find($id);
+        return view('backend.olttypes.show',compact('oltType'));
     }
 
     /**
@@ -63,9 +65,16 @@ class OltTypeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(OltType $olttype)
     {
-        //
+        return view('backend.olttypes.edit',compact('olttype'));
+//        dd($olttype->id);
+//        $id = $olttype->id;
+//        $olttype->id;
+//        $olttype->name;
+////        dd($name);
+//        return view('backend.olttypes.edit',['id'=>$id,'name'=>$name]);
+//        return $oldtype;
     }
 
     /**
@@ -77,7 +86,7 @@ class OltTypeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        
     }
 
     /**
@@ -88,6 +97,8 @@ class OltTypeController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $delete = OltType::find($id);
+        $delete->delete();
+        return redirect()->back()->with('message','deleted successfully!!');
     }
 }

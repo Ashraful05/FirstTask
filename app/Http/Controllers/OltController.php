@@ -47,7 +47,7 @@ class OltController extends Controller
         ]);
         $olt = new Olt();
         $olt->name = $request->name;
-        $olt->user_name = $request->user_name;
+        $olt->username = $request->username;
         $olt->password = Hash::make($request->password);
         $olt->model = $request->model;
         $olt->port = $request->port;
