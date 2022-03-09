@@ -98,10 +98,10 @@ class OltTypeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(OltType $olttype)
     {
-        $delete = OltType::find($id);
-        $delete->delete();
+//        $delete = OltType::find($id);
+        $olttype->delete();
         return redirect()->route('olttype.index')->with('message','deleted successfully!!');
     }
 }
