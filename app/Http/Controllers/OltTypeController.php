@@ -16,7 +16,7 @@ class OltTypeController extends Controller
     public function index()
     {
         $oltTypes = OltType::all();
-        return view('backend.olttypes.olttype_view',compact('oltTypes'));
+        return view('backend.olttype.index',compact('oltTypes'));
     }
 
     /**
@@ -26,7 +26,7 @@ class OltTypeController extends Controller
      */
     public function create()
     {
-        return view('backend.olttypes.olttypes');
+        return view('backend.olttype.create');
     }
 
     /**
@@ -44,7 +44,7 @@ class OltTypeController extends Controller
         $oltType->name = $request->name;
         $oltType->save();
 //        $oltType->oltType()->associate($olt)->save();
-        return redirect()->back()->with('message','OLT Info Added Successfully');
+        return redirect()->route('olttype.index')->with('message','OLT Info Added Successfully');
     }
 
     /**
@@ -56,7 +56,7 @@ class OltTypeController extends Controller
     public function show($id)
     {
         $oltType = OltType::find($id);
-        return view('backend.olttypes.show',compact('oltType'));
+        return view('backend.olttype.show',compact('oltType'));
     }
 
     /**
@@ -67,13 +67,13 @@ class OltTypeController extends Controller
      */
     public function edit(OltType $olttype)
     {
-        return view('backend.olttypes.edit',compact('olttype'));
+        return view('backend.olttype.edit',compact('olttype'));
 //        dd($olttype->id);
 //        $id = $olttype->id;
 //        $olttype->id;
 //        $olttype->name;
 ////        dd($name);
-//        return view('backend.olttypes.edit',['id'=>$id,'name'=>$name]);
+//        return view('backend.olttype.edit',['id'=>$id,'name'=>$name]);
 //        return $oldtype;
     }
 
@@ -84,9 +84,13 @@ class OltTypeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, OltType $olttype)
     {
-        
+        $data = $this->validate($request,[
+           'name'=>'required|max:64'
+        ]);
+        $olttype->update($data);
+        return redirect()->route('olttype.index')->with('message','Updated successfully');
     }
 
     /**
@@ -99,6 +103,6 @@ class OltTypeController extends Controller
     {
         $delete = OltType::find($id);
         $delete->delete();
-        return redirect()->back()->with('message','deleted successfully!!');
+        return redirect()->route('olttype.index')->with('message','deleted successfully!!');
     }
 }
