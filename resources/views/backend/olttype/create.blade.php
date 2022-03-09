@@ -14,7 +14,7 @@
         </div>
         <div class="form-group">
             <div class="row">
-                <button type="submit" class="btn btn-primary">Add OLTTYPE Info</button>
+                <button type="submit" class="btn btn-primary">Add</button>
             </div>
         </div>
     </form>

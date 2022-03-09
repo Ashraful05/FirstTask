@@ -43,7 +43,6 @@ class OltTypeController extends Controller
         $oltType = new OltType();
         $oltType->name = $request->name;
         $oltType->save();
-//        $oltType->oltType()->associate($olt)->save();
         return redirect()->route('olttype.index')->with('message','OLT Info Added Successfully');
     }
 

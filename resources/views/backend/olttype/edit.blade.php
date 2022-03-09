@@ -13,7 +13,7 @@
             <input type="text" name="name" value="{{ $olttype->name }}" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="">
             <span class="text-center text-danger">{{$errors->has('name')?$errors->first('name') : ''}}</span>
         </div>
-        <button type="submit" class="btn btn-primary">Add OLTTYPE Info</button>
+        <button type="submit" class="btn btn-primary">Update</button>
     </form>
 
 @endsection
