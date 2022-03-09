@@ -9,13 +9,15 @@ use App\Http\Controllers\OltTypeController;
 use App\Http\Controllers\ActivationStatusController;
 use App\Http\Controllers\VendorController;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+//Route::get('/', function () {
+//    return view('welcome');
+//});
 
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/',[OltTypeController::class,'index']);
 
 Route::resource('mikrotik',MikrotikController::class);
 Route::resource('olt',OltController::class);
