@@ -16,13 +16,15 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="card">
-                        <div class="card-header"></div>
-                        <div class="card-body">
+                        <div class="card-header">
                             <h6 class="card-body-title text-center">OLT Type List
                                 <a href="{{ route('olttype.create') }}" class="btn btn-primary mb-2" style="float: right;">Create</a>
                             </h6>
+                        </div>
+                        <div class="card-body">
+
                             <div class="table-wrapper">
-                                <table  id="example" class="table table-bordered table-responsive">
+                                <table  id="example" class="table table-bordered table-striped" style="width:100%">
                                     <thead>
                                         <tr>
                                             <th scope="col">#SL No.</th>
@@ -66,7 +68,7 @@
 
         $(document).ready(function() {
             $('#example').DataTable();
-} );
+        } );
     </script>
     
 @endsection
