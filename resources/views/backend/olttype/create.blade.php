@@ -11,6 +11,7 @@
     <section class="py-5">
         <div class="container">
             <div class="row">
+<<<<<<< HEAD
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header">
@@ -39,6 +40,9 @@
                         </div>
                     </div>
                 </div>
+=======
+                <button type="submit" class="btn btn-primary">Add</button>
+>>>>>>> f06f27db2961616c5a0880158d3bb93e69a7f735
             </div>
         </div>
     </section>
