@@ -93,10 +93,6 @@ class OltTypeController extends Controller
      */
     public function destroy(OltType $olttype)
     {
-<<<<<<< HEAD
-=======
-//        $delete = OltType::find($id);
->>>>>>> f06f27db2961616c5a0880158d3bb93e69a7f735
         $olttype->delete();
         return redirect()->route('olttype.index')->with('message','deleted successfully!!');
     }
