@@ -68,13 +68,6 @@ class OltTypeController extends Controller
     public function edit(OltType $olttype)
     {
         return view('backend.olttype.edit',compact('olttype'));
-//        dd($olttype->id);
-//        $id = $olttype->id;
-//        $olttype->id;
-//        $olttype->name;
-////        dd($name);
-//        return view('backend.olttype.edit',['id'=>$id,'name'=>$name]);
-//        return $oldtype;
     }
 
     /**
@@ -99,10 +92,9 @@ class OltTypeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(OltType $olttype)
     {
-        $delete = OltType::find($id);
-        $delete->delete();
+        $olttype->delete();
         return redirect()->route('olttype.index')->with('message','deleted successfully!!');
     }
 }
