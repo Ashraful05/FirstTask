@@ -1,10 +1,16 @@
 @extends('layouts.app')
 @section('content')
-    @if(Session::has('message'))
-        <div class="alert alert-success" role="alert">
-            {{ Session::get('message') }}
-        </div>
-    @endif
+<div>
+    <div class="mb-3 mt-3">
+        @if (Session::has('message'))
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                {{ Session::get('message') }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        @endif
+    </div>
+</div>
+    
 
     <section class="py-5">
         <div class="container">
@@ -20,7 +26,7 @@
                                 @method('put')
                                 <div class="mb-3">
                                     <label for="exampleInputEmail1" class="form-class">OLT Type Name</label>
-                                    <input type="text" name="name" value="{{ $olttype->name }}" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="">
+                                    <input type="text" name="name" value="{{ $olttype->name }}" class="form-control">
                                     <span class="text-center text-danger">{{$errors->has('name')?$errors->first('name') : ''}}</span>
                                 </div>
                                 <div class="form-group">

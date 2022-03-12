@@ -2,14 +2,16 @@
 @section('content')
     <div>
         <div class="mb-3 mt-3">
-            
+            @if (Session::has('message'))
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    {{ Session::get('message') }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            @endif
         </div>
     </div>
-    @if (Session::has('message'))
-        <div class="alert alert-success" role="alert">
-            {{ Session::get('message') }}
-        </div>
-    @endif
+        
+
     
     <section class="py-5">
         <div class="container">
@@ -17,7 +19,7 @@
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header">
-                            <h6 class="card-body-title text-center">OLT Type List
+                            <h6 class="card-body-title text-center"><strong>Olt Type List</strong>
                                 <a href="{{ route('olttype.create') }}" class="btn btn-primary mb-2" style="float: right;">Create</a>
                             </h6>
                         </div>
@@ -27,7 +29,7 @@
                                 <table  id="example" class="table table-bordered table-striped" style="width:100%">
                                     <thead>
                                         <tr>
-                                            <th scope="col">#SL No.</th>
+                                            <th scope="col">#</th>
                                             <th scope="col">Name</th>
                                             <th scope="col" >Actions</th>
                                         </tr>
@@ -38,13 +40,18 @@
                                                 <th scope="row">{{ ++$row }}</th>
                                                 <td>{{ $oltType->name }}</td>
                                                 <td>
-                                                    <a href="{{ route('olttype.edit', $oltType->id) }}" class="btn btn-success mr-2"><i class="fa fa-edit"></i></a>
-                                                    <form action="{{ route('olttype.destroy', $oltType->id) }}" method="post">
-                                                        @csrf
-                                                        @method('delete')
-                                                        <button type="submit" name="btn" class="btn btn-danger mt-2"><i class="fa fa-delete"></i></button>
-                                                    </form>
-                                                
+                                                    <div class="d-flex justify-content-start">
+                                                        <span class="me-2">
+                                                            <a href="{{ route('olttype.edit', $oltType->id) }}" class="btn btn-success"><i class="fa fa-edit"></i></a>
+                                                        </span>
+                                                        <span>
+                                                            <form action="{{ route('olttype.destroy', $oltType->id) }}" method="post">
+                                                                @csrf
+                                                                @method('delete')
+                                                                <button type="submit" name="btn" class="btn btn-danger"><i class="fa-regular fa-trash-can"></i></button>
+                                                            </form>
+                                                        </span>
+                                                    </div>
                                                 </td>
                                             </tr>
                                         @endforeach

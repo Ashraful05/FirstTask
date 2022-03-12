@@ -7,6 +7,7 @@ use App\Http\Controllers\RouterTypeController;
 use App\Http\Controllers\OltController;
 use App\Http\Controllers\OltTypeController;
 use App\Http\Controllers\ActivationStatusController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\VendorController;
 
 //Route::get('/', function () {
@@ -17,7 +18,9 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('/',[OltTypeController::class,'index']);
+// Route::get('/',[OltTypeController::class,'index']);
+
+Route::get('/',[DashboardController::class,'index']);
 
 Route::resource('mikrotik',MikrotikController::class);
 Route::resource('olt',OltController::class);

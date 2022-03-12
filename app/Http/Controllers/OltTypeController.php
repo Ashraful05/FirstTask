@@ -24,9 +24,9 @@ class OltTypeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(OltType $olttype)
     {
-        return view('backend.olttype.create');
+        return view('backend.olttype.form', compact('olttype'));
     }
 
     /**
@@ -66,7 +66,7 @@ class OltTypeController extends Controller
      */
     public function edit(OltType $olttype)
     {
-        return view('backend.olttype.edit',compact('olttype'));
+        return view('backend.olttype.form',compact('olttype'));
     }
 
     /**
@@ -79,7 +79,7 @@ class OltTypeController extends Controller
     public function update(Request $request, OltType $olttype)
     {
         $data = $this->validate($request,[
-           'name'=>'required|max:64'
+           'name'=>'required|string|max:64'
         ]);
         $olttype->update($data);
         return redirect()->route('olttype.index')->with('message','Updated successfully');
