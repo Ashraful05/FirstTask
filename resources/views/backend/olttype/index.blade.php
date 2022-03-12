@@ -38,13 +38,13 @@
                                                 <th scope="row">{{ ++$row }}</th>
                                                 <td>{{ $oltType->name }}</td>
                                                 <td>
-                                                    <a href="{{ route('olttype.edit', $oltType->id) }}" class="btn btn-success">Edit</a>
+                                                    <a href="{{ route('olttype.edit', $oltType->id) }}" class="btn btn-success mr-2"><i class="fa fa-edit"></i></a>
                                                     <form action="{{ route('olttype.destroy', $oltType->id) }}" method="post">
                                                         @csrf
                                                         @method('delete')
-                                                        <button type="submit" name="btn" class="btn btn-danger mt-2">Delete</button>
+                                                        <button type="submit" name="btn" class="btn btn-danger mt-2"><i class="fa fa-delete"></i></button>
                                                     </form>
-                                                    {{-- <a href="{{ route('olttype.destroy',['id'=>$oltType->id]) }}">Delete</a> --}}
+                                                
                                                 </td>
                                             </tr>
                                         @endforeach
@@ -60,11 +60,7 @@
     </section>
         
     <script>
-        // $(function(){
-        //     $('#datatable1').DataTable({
-        //         // responsive: true,
-        //     });
-        // });
+        
 
         $(document).ready(function() {
             $('#example').DataTable();

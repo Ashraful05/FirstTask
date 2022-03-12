@@ -14,31 +14,24 @@
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap5.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/js/all.min.js"></script>
 
     
-    {{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.1/css/bootstrap.min.css"> --}}
 
-    {{-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"
-     integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
-     crossorigin="anonymous"></script>
-     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-
-    <script src="{{ asset('js/datatable.js')}}"></script>
-    <script src="{{ asset('js/jquerydatatable.js') }}"></script>
-    <script src="{{ asset('js/datatable-responsive.js')}}"></script>
-    <script src="{{ asset('js/bootstrapdatatable.js')}}"></script> --}}
 
    
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
+    {{-- Font Awesome --}}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    {{-- <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css"> --}}
+   
     <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css">
-    {{-- <link rel="stylesheet" href="{{ asset('css/datatable.css') }}"> --}}
-    {{-- <link rel="stylesheet" href="{{ asset('css/bootstraptable.css')}}"> --}}
+   
 
 </head>
 <body>
