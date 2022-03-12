@@ -38,7 +38,7 @@ class OltTypeController extends Controller
     public function store(Request $request)
     {
         $this->validate($request,[
-            'name'=>'required|max:32'
+            'name'=>'required|string|max:32'
         ]);
         $oltType = new OltType();
         $oltType->name = $request->name;

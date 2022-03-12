@@ -20,7 +20,7 @@
                     <div class="card">
                         <div class="card-header">
                             
-                            @if($olttype->exists)
+                            @if($routertype->exists)
                                 <h5 class="text-center text-success">Edit</h5>
                             @else
                             <h5 class="text-center text-success">Add</h5>
@@ -32,23 +32,23 @@
                             @enderror
                         </div>
                         <div class="card-body">
-                            @if ($olttype->exists)
-                                <form action="{{ route('olttype.update',$olttype->id) }}" method="post" class="needs-validation" novalidate>
+                            @if ($routertype->exists)
+                                <form action="{{ route('routertype.update',$routertype->id) }}" method="post" class="needs-validation" novalidate>
                                     @method('put')
                             @else
-                                <form action="{{ route('olttype.store') }}" method="POST" class="needs-validation" novalidate>
+                                <form action="{{ route('routertype.store') }}" method="POST" class="needs-validation" novalidate>
                             @endif
                                 @csrf
                                 <div class="mb-3">
                                     <label for="name" class="form-class">Name</label>
-                                    <input type="text" name="name" value="{{ old('name',$olttype->name) }}" class="form-control" id="name" required>
+                                    <input type="text" name="name" value="{{ old('name',$routertype->name) }}" class="form-control" id="name" required>
                                     <div class="invalid-feedback">
                                        <h6>Please enter name</h6>
                                     </div>
                                     {{-- <span class="text-center text-danger">{{$errors->has('name')?$errors->first('name') : ''}}</span> --}}
                                 </div>
                                 <div class="form-group">
-                                    @if($olttype->exists)
+                                    @if($routertype->exists)
                                         <button type="submit" class="btn btn-primary btn-block">Update</button>
                                     @else
                                     <button type="submit" class="btn btn-primary btn-block">Save</button>

@@ -19,8 +19,8 @@
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header">
-                            <h6 class="card-body-title text-center"><strong>Router Type List</strong>
-                                <a href="{{ route('routertype.create') }}" class="btn btn-primary mb-2" style="float: right;">Create</a>
+                            <h6 class="card-body-title text-center"><strong>olt</strong>
+                                <a href="{{ route('olt.create') }}" class="btn btn-primary mb-2" style="float: right;">Create</a>
                             </h6>
                         </div>
                         <div class="card-body">
@@ -35,17 +35,17 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($routertypes as $row => $routertype)
+                                        @foreach ($olts as $row => $olt)
                                             <tr>
                                                 <th scope="row">{{ ++$row }}</th>
-                                                <td>{{ $routertype->name }}</td>
+                                                <td>{{ $olt->name }}</td>
                                                 <td>
                                                     <div class="d-flex justify-content-start">
                                                         <span class="me-2">
-                                                            <a href="{{ route('routertype.edit', $routertype->id) }}" class="btn btn-success"><i class="fa fa-edit"></i></a>
+                                                            <a href="{{ route('olt.edit', $olt->id) }}" class="btn btn-success"><i class="fa fa-edit"></i></a>
                                                         </span>
                                                         <span>
-                                                            <form action="{{ route('routertype.destroy', $routertype->id) }}" method="post">
+                                                            <form action="{{ route('olt.destroy', $olt->id) }}" method="post">
                                                                 @csrf
                                                                 @method('delete')
                                                                 <button type="submit" name="btn" class="btn btn-danger"><i class="fa-regular fa-trash-can"></i></button>

@@ -16,7 +16,8 @@ class OltController extends Controller
      */
     public function index()
     {
-       return view('backend.olt.olt');
+        $olts = Olt::all();
+       return view('backend.olt.index',compact('olts'));
     }
 
     /**
@@ -24,9 +25,9 @@ class OltController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Olt $olt)
     {
-        //
+       return view('backend.olt.form',compact('olt'));
     }
 
     /**
@@ -38,12 +39,12 @@ class OltController extends Controller
     public function store(Request $request)
     {
         $this->validate($request,[
-           'name'=>'required|max:64',
-            'username'=>'required|max:64',
-            'password'=>'required|max:64',
-            'ip_address'=>'required|max:64',
-            'model'=>'required|max:128',
-            'port'=>'required|max:11',
+           'name'=>'required|string|max:64',
+            'username'=>'required|string|max:64',
+            'password'=>'required|string|max:64',
+            'ip_address'=>'required|string|max:64',
+            'model'=>'required|string|max:128',
+            'port'=>'required|string|max:11',
         ]);
         $olt = new Olt();
         $olt->name = $request->name;
@@ -54,6 +55,7 @@ class OltController extends Controller
         $olt->ip_address = $request->ip_address;
 //        $olt->olts()->save($oltType);
         $olt->save();
+        return redirect()->route('olt.index')->with('message','olt info saved!!!');
 //        return $olt;
     }
 
@@ -74,9 +76,9 @@ class OltController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Olt $olt)
     {
-        //
+        return view('backend.olt.form',compact('olt'));
     }
 
     /**
@@ -86,9 +88,18 @@ class OltController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Olt $olt)
     {
-        //
+        $data = $this->validate($request,[
+            'name'=>'required|string|max:64',
+             'username'=>'required|max:64',
+             'password'=>'required|max:64',
+             'ip_address'=>'required|max:64',
+             'model'=>'required|max:128',
+             'port'=>'required|max:11',
+         ]);
+         $olt->update($data);
+         return redirect()->route('olt.index')->with('message','olt info updated!!!');
     }
 
     /**
@@ -97,8 +108,9 @@ class OltController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Olt $olt)
     {
-        //
+        $olt->delete();
+        return redirect()->route('olt.index')->with('message','olt info deleted!!!');
     }
 }

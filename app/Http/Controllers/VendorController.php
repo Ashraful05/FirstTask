@@ -14,7 +14,8 @@ class VendorController extends Controller
      */
     public function index()
     {
-        return view('backend.vendor.vendor');
+        $vendors = Vendor::all();
+        return view('backend.vendor.index',compact('vendors'));
     }
 
     /**
@@ -22,9 +23,9 @@ class VendorController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Vendor $vendor)
     {
-        //
+        return view('backend.vendor.form',compact('vendor'));
     }
 
     /**
@@ -36,12 +37,12 @@ class VendorController extends Controller
     public function store(Request $request)
     {
         $this->validate($request,[
-           'name'=>'required|max:32'
+           'name'=>'required|string|max:32'
         ]);
         $vendor = new Vendor();
         $vendor->name = $request->name;
         $vendor->save();
-        return redirect()->back()->with('message','vendor Info Added Successfully');
+        return redirect()->route('vendor.index')->with('message','vendor Info Added Successfully');
     }
 
     /**
@@ -52,8 +53,8 @@ class VendorController extends Controller
      */
     public function show($id)
     {
-        $vendors = Vendor::all();
-        return view('backend.vendor.vendorview',['vendors'=>$vendors]);
+        // $vendors = Vendor::all();
+        // return view('backend.vendor.index',['vendors'=>$vendors]);
     }
 
     /**
@@ -62,10 +63,9 @@ class VendorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Vendor $vendor)
     {
-        $edit = Vendor::findOrFail($id);
-        return view('backend.vendor.vendorview',['edit'=>$edit]);
+        return view('backend.vendor.form',compact('vendor'));
     }
 
     /**
@@ -75,9 +75,13 @@ class VendorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Vendor $vendor)
     {
-        //
+        $data = $this->validate($request,[
+            'name'=> 'required|string|max:32'
+        ]);
+        $vendor->update($data);
+        return redirect()->route('vendor.index')->with('message','Vendor Info Updated Successfully');
     }
 
     /**
@@ -86,8 +90,9 @@ class VendorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Vendor $vendor)
     {
-        //
+        $vendor->delete();
+        return redirect()->route('vendor.index')->with('message','Vendor Info Deleted Successfully');
     }
 }

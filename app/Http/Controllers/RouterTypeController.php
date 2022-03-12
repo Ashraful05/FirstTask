@@ -14,7 +14,8 @@ class RouterTypeController extends Controller
      */
     public function index()
     {
-        return view('backend.RouterType.routertype');
+        $routertypes = RouterType::all();
+        return view('backend.routertype.index',compact('routertypes'));
     }
 
     /**
@@ -22,9 +23,9 @@ class RouterTypeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(RouterType $routertype)
     {
-
+        return view('backend.routertype.form',compact('routertype'));
     }
 
     /**
@@ -33,15 +34,18 @@ class RouterTypeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request,RouterType $routertype)
     {
-        $this->validate($request,[
+        $data = $this->validate($request,[
            'name'=>'required|max:64'
         ]);
-        $routerType = new RouterType();
-        $routerType->name = $request->name;
-        $routerType->save();
-        return redirect()->back()->with('message','RouterType info added Successfully');
+        // dd($data);
+        // $routertype->save($data);
+        // dd($routertype);
+        $routertype = new RouterType();
+        $routertype->name = $request->name;
+        $routertype->save();
+        return redirect()->route('routertype.index')->with('message','RouterType info added Successfully');
     }
 
     /**
@@ -52,8 +56,7 @@ class RouterTypeController extends Controller
      */
     public function show($id)
     {
-        $routerTypes = RouterType::all();
-        return view('backend.RouterType.routertypeview',['routerTypes'=>$routerTypes]);
+        
     }
 
     /**
@@ -62,9 +65,9 @@ class RouterTypeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(RouterType $routertype)
     {
-        //
+        return view('backend.routertype.form',compact('routertype'));
     }
 
     /**
@@ -74,9 +77,13 @@ class RouterTypeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, RouterType $routertype)
     {
-        //
+        $data = $this->validate($request,[
+            'name'=>'required|string|max:64'
+        ]);
+        $routertype->update($data);
+        return redirect()->route('routertype.index')->with('message','Router Info Updated!!!');
     }
 
     /**
@@ -85,8 +92,9 @@ class RouterTypeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(RouterType $routertype)
     {
-        //
+        $routertype->delete();
+        return redirect()->route('routertype.index')->with('message','Router Info Deleted!!!');
     }
 }
