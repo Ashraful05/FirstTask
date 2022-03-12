@@ -16,7 +16,8 @@ class MikrotikController extends Controller
     public function index()
     {
 //        dd('hi');
-        return view('backend.mikrotik.mikrotik');
+        $mikrotiks = Mikrotik::all();
+        return view('backend.mikrotik.index',compact('mikrotiks'));
     }
 
     /**
@@ -24,9 +25,9 @@ class MikrotikController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Mikrotik $mikrotik)
     {
-        //
+        return view('backend.mikrotik.form',compact('mikrotik'));
     }
 
     /**
@@ -55,7 +56,7 @@ class MikrotikController extends Controller
        $mikrotik->save();
 //       return $mikrotik;
 //       dd($result);
-       return redirect()->back()->with('message','Mikrotik Info saved successfully!!');
+       return redirect()->route('mikrotik.index')->with('message','Mikrotik Info saved successfully!!');
     }
 
     /**
@@ -75,9 +76,9 @@ class MikrotikController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Mikrotik $mikrotik)
     {
-        //
+        return view('backend.mikotik.form',compact('mikrotik'));
     }
 
     /**
@@ -87,9 +88,18 @@ class MikrotikController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request,Mikrotik $mikrotik)
     {
-        //
+        $data = $this->validate($request,[
+            'name'=>'required|max:64',
+            'user_name'=>'required|max:64',
+            'password'=>'required|max:64',
+             'ip_address'=>'required|max:15',
+             'ssh_port'=>'required',
+             'api_port'=>'required',
+         ]);
+         $mikrotik->update($data);
+         return redirect()->route('mikrotik.index')->with('message','Mikrotik Info updated successfully!!');
     }
 
     /**
@@ -98,8 +108,9 @@ class MikrotikController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Mikrotik $mikrotik)
     {
-        //
+        $mikrotik->delete();
+        return redirect()->route('mikrotik.index')->with('message','Mikrotik Info deleted successfully!!');
     }
 }
