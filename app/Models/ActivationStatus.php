@@ -11,6 +11,11 @@ class ActivationStatus extends Model
 
     protected $fillable=['name'];
 
+    public static $NEW = 1;
+    public static $ACTIVE = 2;
+    public static $INACTIVE = 3;
+
+
     public function mikrotiks()
     {
         return $this->hasMany(Mikrotik::class,'activation_status_id');

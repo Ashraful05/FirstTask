@@ -11,6 +11,17 @@ class Mikrotik extends Model
 
     protected $fillable=['user_name','password','ssh_port','api_port','ip_address'];
 
+    public static function boot()
+    {
+        parent::boot();
+        static::creating(function($model)
+        {
+            $model->activation_status_id = ActivationStatus::$ACTIVE;
+            // $model->router_type_id = 1;
+        });
+
+    }
+
     public function routerType()
     {
         return $this->belongsTo(RouterType::class);
