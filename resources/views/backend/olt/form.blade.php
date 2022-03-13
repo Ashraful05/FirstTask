@@ -86,10 +86,22 @@
                                 </div>
                                 <div class="mb-3">  
                                     <select class="form-select" aria-label="" required>
-                                        <label for="router_type" class="form-class">Router Type</label>
-                                        <option selected>Select a Router</option>
-                                        @foreach ($routerTypes as $routerType)
-                                            <option value="{{$routerType->id}}">{{$routerType->name}}</option>
+                                        <label for="olt_type" class="form-class">Olt Type</label>
+                                        <option selected>----Select a Olt----</option>
+                                        @foreach ($oltTypes as $oltType)
+                                            <option value="{{$oltType->id}}">{{$oltType->name}}</option>
+                                        @endforeach
+                                    </select>
+                                    <div class="invalid-feedback">
+                                        <h6>Please select a router</h6>
+                                    </div>
+                                </div>
+                                <div class="mb-3">  
+                                    <select class="form-select" aria-label="" required>
+                                        <label for="vendor" class="form-class">Vendor</label>
+                                        <option selected>----Select a Vendor----</option>
+                                        @foreach ($vendors as $vendor)
+                                            <option value="{{$vendor->id}}">{{$vendor->name}}</option>
                                         @endforeach
                                     </select>
                                     <div class="invalid-feedback">

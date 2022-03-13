@@ -48,7 +48,6 @@ class MikrotikController extends Controller
             'ip_address' => 'required|string|max:15',
             'ssh_port' => 'required|numeric|max:65535|min:1',
             'api_port' => 'required|numeric|max:65535|min:1',
-            'activation_status_id' => 'required'
         ]);
         
         $mikrotik = new Mikrotik();
@@ -58,7 +57,6 @@ class MikrotikController extends Controller
         $mikrotik->ssh_port = $request->ssh_port;
         $mikrotik->api_port = $request->api_port;
         $mikrotik->ip_address = $request->ip_address;
-        $mikrotik->activation_status_id = $request->activation_status_id;
 
         $mikrotik->save();
 

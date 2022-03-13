@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Mikrotik;
 use App\Models\Olt;
+use App\Models\OltType;
+use App\Models\Vendor;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -27,7 +29,9 @@ class OltController extends Controller
      */
     public function create(Olt $olt)
     {
-       return view('backend.olt.form',compact('olt'));
+        $oltTypes = OltType::all();
+        $vendors = Vendor::all();
+       return view('backend.olt.form',compact('olt','oltTypes','vendors'));
     }
 
     /**
