@@ -56,7 +56,7 @@ class MikrotikController extends Controller
         $mikrotik->api_port = $request->api_port;
         $mikrotik->ip_address = $request->ip_address;
         $mikrotik->save();
-        dd($mikrotik);
+        // dd($mikrotik);
         //       return $mikrotik;
         //       dd($result); //->withErrors()
         return redirect()->route('mikrotik.index')->with('message', 'Mikrotik Info saved successfully!!');

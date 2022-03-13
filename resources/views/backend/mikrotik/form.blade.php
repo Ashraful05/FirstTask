@@ -90,7 +90,7 @@
                                 <input type="number" name="api_port" value="{{ old('api_port', $mikrotik->api_port) }}"
                                     class="form-control" id="port" required>
                                 <div class="invalid-feedback">
-                                    <h6>Please enter ssh port</h6>
+                                    <h6>Please enter api port</h6>
                                 </div>
                             </div>
                             <div class="form-group">

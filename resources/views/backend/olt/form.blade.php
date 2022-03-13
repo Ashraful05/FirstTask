@@ -21,15 +21,17 @@
                         <div class="card-header">
                             
                             @if($olt->exists)
-                                <h5 class="text-center text-success">Edit</h5>
+                                <h5 class="text-center text-success">Olt Edit</h5>
                             @else
-                            <h5 class="text-center text-success">Add</h5>
+                            <h5 class="text-center text-success">Olt Add</h5>
                             @endif
-                            @error('name')
-                                <div class="alert alert-danger alert-dismissible fade show" role="alert">{{ $message }}
-                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                                </div>
-                            @enderror
+                            @if($errors->any())
+                                @foreach ($errors->all() as $error)
+                                    <div class="alert alert-danger alert-dismissible fade show" role="alert">{{ $error }}
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                    </div>
+                                @endforeach
+                            @endif
                         </div>
                         <div class="card-body">
                             @if ($olt->exists)
@@ -48,14 +50,14 @@
                                 </div>
                                 <div class="mb-3">
                                     <label for="name" class="form-class">UserName</label>
-                                    <input type="text" name="name" value="{{ old('username',$olt->username) }}" class="form-control" id="name" required>
+                                    <input type="text" name="username" value="{{ old('username',$olt->username) }}" class="form-control" id="name" required>
                                     <div class="invalid-feedback">
                                        <h6>Please enter username</h6>
                                     </div>
                                 </div>
                                 <div class="mb-3">
                                     <label for="name" class="form-class">Password</label>
-                                    <input type="text" name="name" value="{{ old('password',$olt->password) }}" class="form-control" id="password" required>
+                                    <input type="password" name="password" value="{{ old('password',$olt->password) }}" class="form-control" id="password" required>
                                     <div class="invalid-feedback">
                                        <h6>Please enter password</h6>
                                     </div>
@@ -77,7 +79,7 @@
 
                                 <div class="mb-3">
                                     <label for="name" class="form-class">Port</label>
-                                    <input type="text" name="port" value="{{ old('port',$olt->model) }}" class="form-control" id="port" required>
+                                    <input type="number" name="port" value="{{ old('port',$olt->model) }}" class="form-control" id="port" required>
                                     <div class="invalid-feedback">
                                        <h6>Please enter port</h6>
                                     </div>

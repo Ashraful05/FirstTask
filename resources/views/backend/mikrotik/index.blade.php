@@ -42,10 +42,10 @@
                                                 <td>
                                                     <div class="d-flex justify-content-start">
                                                         <span class="me-2">
-                                                            <a href="{{ route('olt.edit', $olt->id) }}" class="btn btn-success"><i class="fa fa-edit"></i></a>
+                                                            <a href="{{ route('mikrotik.edit', $mikrotik->id) }}" class="btn btn-success"><i class="fa fa-edit"></i></a>
                                                         </span>
                                                         <span>
-                                                            <form action="{{ route('olt.destroy', $olt->id) }}" method="post">
+                                                            <form action="{{ route('mikrotik.destroy', $mikrotik->id) }}" method="post">
                                                                 @csrf
                                                                 @method('delete')
                                                                 <button type="submit" name="btn" class="btn btn-danger"><i class="fa-regular fa-trash-can"></i></button>
