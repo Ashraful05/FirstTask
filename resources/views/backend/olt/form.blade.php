@@ -84,6 +84,18 @@
                                        <h6>Please enter port</h6>
                                     </div>
                                 </div>
+                                <div class="mb-3">  
+                                    <select class="form-select" aria-label="" required>
+                                        <label for="router_type" class="form-class">Router Type</label>
+                                        <option selected>Select a Router</option>
+                                        @foreach ($routerTypes as $routerType)
+                                            <option value="{{$routerType->id}}">{{$routerType->name}}</option>
+                                        @endforeach
+                                    </select>
+                                    <div class="invalid-feedback">
+                                        <h6>Please select a router</h6>
+                                    </div>
+                                </div>
                                 <div class="form-group">
                                     @if($olt->exists)
                                         <button type="submit" class="btn btn-primary btn-block">Update</button>

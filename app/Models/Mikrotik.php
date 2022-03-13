@@ -9,7 +9,7 @@ class Mikrotik extends Model
 {
     use HasFactory;
 
-    protected $fillable=['user_name','password','ssh_port','api_port','ip_address'];
+    protected $fillable=['user_name','password','ssh_port','api_port','ip_address','router_type_id'];
 
     public static function boot()
     {
