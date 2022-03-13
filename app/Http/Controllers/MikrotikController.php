@@ -15,9 +15,9 @@ class MikrotikController extends Controller
      */
     public function index()
     {
-//        dd('hi');
+        //        dd('hi');
         $mikrotiks = Mikrotik::all();
-        return view('backend.mikrotik.index',compact('mikrotiks'));
+        return view('backend.mikrotik.index', compact('mikrotiks'));
     }
 
     /**
@@ -27,7 +27,7 @@ class MikrotikController extends Controller
      */
     public function create(Mikrotik $mikrotik)
     {
-        return view('backend.mikrotik.form',compact('mikrotik'));
+        return view('backend.mikrotik.form', compact('mikrotik'));
     }
 
     /**
@@ -38,25 +38,25 @@ class MikrotikController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request,[
-           'name'=>'required|max:64',
-           'user_name'=>'required|max:64',
-           'password'=>'required|max:64',
-            'ip_address'=>'required|max:15',
-            'ssh_port'=>'required',
-            'api_port'=>'required',
+        $this->validate($request, [
+            'name' => 'required|max:64',
+            'user_name' => 'required|max:64',
+            'password' => 'required|max:64',
+            'ip_address' => 'required|max:15',
+            'ssh_port' => 'required',
+            'api_port' => 'required',
         ]);
-       $mikrotik = new Mikrotik();
-       $mikrotik->name = $request->name;
-       $mikrotik->user_name = $request->user_name;
-       $mikrotik->password = Hash::make($request->password);
-       $mikrotik->ssh_port = $request->ssh_port;
-       $mikrotik->api_port = $request->api_port;
-       $mikrotik->ip_address = $request->ip_address;
-       $mikrotik->save();
-//       return $mikrotik;
-//       dd($result);
-       return redirect()->route('mikrotik.index')->with('message','Mikrotik Info saved successfully!!');
+        $mikrotik = new Mikrotik();
+        $mikrotik->name = $request->name;
+        $mikrotik->user_name = $request->user_name;
+        $mikrotik->password = Hash::make($request->password);
+        $mikrotik->ssh_port = $request->ssh_port;
+        $mikrotik->api_port = $request->api_port;
+        $mikrotik->ip_address = $request->ip_address;
+        $mikrotik->save();
+        //       return $mikrotik;
+        //       dd($result);
+        return redirect()->route('mikrotik.index')->with('message', 'Mikrotik Info saved successfully!!');
     }
 
     /**
@@ -78,7 +78,7 @@ class MikrotikController extends Controller
      */
     public function edit(Mikrotik $mikrotik)
     {
-        return view('backend.mikotik.form',compact('mikrotik'));
+        return view('backend.mikrotik.form', compact('mikrotik'));
     }
 
     /**
@@ -88,18 +88,18 @@ class MikrotikController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request,Mikrotik $mikrotik)
+    public function update(Request $request, Mikrotik $mikrotik)
     {
-        $data = $this->validate($request,[
-            'name'=>'required|max:64',
-            'user_name'=>'required|max:64',
-            'password'=>'required|max:64',
-             'ip_address'=>'required|max:15',
-             'ssh_port'=>'required',
-             'api_port'=>'required',
-         ]);
-         $mikrotik->update($data);
-         return redirect()->route('mikrotik.index')->with('message','Mikrotik Info updated successfully!!');
+        $data = $this->validate($request, [
+            'name' => 'required|max:64',
+            'user_name' => 'required|max:64',
+            'password' => 'required|max:64',
+            'ip_address' => 'required|max:15',
+            'ssh_port' => 'required',
+            'api_port' => 'required',
+        ]);
+        $mikrotik->update($data);
+        return redirect()->route('mikrotik.index')->with('message', 'Mikrotik Info updated successfully!!');
     }
 
     /**
@@ -111,6 +111,6 @@ class MikrotikController extends Controller
     public function destroy(Mikrotik $mikrotik)
     {
         $mikrotik->delete();
-        return redirect()->route('mikrotik.index')->with('message','Mikrotik Info deleted successfully!!');
+        return redirect()->route('mikrotik.index')->with('message', 'Mikrotik Info deleted successfully!!');
     }
 }
