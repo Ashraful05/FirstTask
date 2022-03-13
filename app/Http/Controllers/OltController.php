@@ -44,12 +44,12 @@ class OltController extends Controller
             'password'=>'required|string|max:64',
             'ip_address'=>'required|string|max:64',
             'model'=>'required|string|max:128',
-            'port'=>'required|string|max:11',
+            'port'=>'required|numeric|max:11',
         ]);
         $olt = new Olt();
         $olt->name = $request->name;
         $olt->username = $request->username;
-        $olt->password = Hash::make($request->password);
+        $olt->password = $request->password;
         $olt->model = $request->model;
         $olt->port = $request->port;
         $olt->ip_address = $request->ip_address;

@@ -42,8 +42,8 @@ class MikrotikController extends Controller
         $data = $this->validate($request, [
             'name' => 'required|max:64',
             'user_name' => 'required|string|max:64',
-            'password' => 'required|max:64',
-            'ip_address' => 'required|max:15',
+            'password' => 'required|string|max:64',
+            'ip_address' => 'required|string|max:15',
             'ssh_port' => 'required|numeric|max:65,535|min:1',
             'api_port' => 'required|numeric|max:65,535|min:1',
         ]);
