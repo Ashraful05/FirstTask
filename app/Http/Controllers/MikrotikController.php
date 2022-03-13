@@ -38,24 +38,27 @@ class MikrotikController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, [
+        
+        $data = $this->validate($request, [
             'name' => 'required|max:64',
-            'user_name' => 'required|max:64',
+            'user_name' => 'required|string|max:64',
             'password' => 'required|max:64',
             'ip_address' => 'required|max:15',
-            'ssh_port' => 'required',
-            'api_port' => 'required',
+            'ssh_port' => 'required|numeric|max:65,535|min:1',
+            'api_port' => 'required|numeric|max:65,535|min:1',
         ]);
+        
         $mikrotik = new Mikrotik();
         $mikrotik->name = $request->name;
         $mikrotik->user_name = $request->user_name;
-        $mikrotik->password = Hash::make($request->password);
+        $mikrotik->password = $request->password;
         $mikrotik->ssh_port = $request->ssh_port;
         $mikrotik->api_port = $request->api_port;
         $mikrotik->ip_address = $request->ip_address;
         $mikrotik->save();
+        dd($mikrotik);
         //       return $mikrotik;
-        //       dd($result);
+        //       dd($result); //->withErrors()
         return redirect()->route('mikrotik.index')->with('message', 'Mikrotik Info saved successfully!!');
     }
 

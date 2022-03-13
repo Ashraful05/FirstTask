@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('activation_statuses', function (Blueprint $table) {
             $table->id();
-            $table->string('name',16)->nullable();
+            $table->string('name',16);
             $table->timestamps();
         });
     }

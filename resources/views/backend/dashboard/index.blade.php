@@ -27,7 +27,7 @@
                         <div class="col-md-3">
                             <a href="{{ route('mikrotik.index') }}">Mikrotik</a>
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-md-2">
                             <a href="{{ route('olt.index') }}">Olt</a>
                         </div>
                         <div class="col-md-2">
