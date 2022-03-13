@@ -39,7 +39,7 @@ class MikrotikController extends Controller
     public function store(Request $request)
     {
         
-        $data = $this->validate($request, [
+         $this->validate($request, [
             'name' => 'required|max:64',
             'user_name' => 'required|string|max:64',
             'password' => 'required|string|max:64',
@@ -56,9 +56,6 @@ class MikrotikController extends Controller
         $mikrotik->api_port = $request->api_port;
         $mikrotik->ip_address = $request->ip_address;
         $mikrotik->save();
-        // dd($mikrotik);
-        //       return $mikrotik;
-        //       dd($result); //->withErrors()
         return redirect()->route('mikrotik.index')->with('message', 'Mikrotik Info saved successfully!!');
     }
 
