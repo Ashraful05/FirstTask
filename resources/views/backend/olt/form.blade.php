@@ -93,7 +93,7 @@
                                         @endforeach
                                     </select>
                                     <div class="invalid-feedback">
-                                        <h6>Please select a router</h6>
+                                        <h6>Please select a Olt</h6>
                                     </div>
                                 </div>
                                 <div class="mb-3">  
@@ -105,7 +105,7 @@
                                         @endforeach
                                     </select>
                                     <div class="invalid-feedback">
-                                        <h6>Please select a router</h6>
+                                        <h6>Please select a vendor</h6>
                                     </div>
                                 </div>
                                 <div class="form-group">
