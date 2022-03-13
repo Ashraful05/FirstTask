@@ -50,7 +50,7 @@
                                 </div>
                                 <div class="mb-3">
                                     <label for="name" class="form-class">UserName</label>
-                                    <input type="text" name="username" value="{{ old('username',$olt->username) }}" class="form-control" id="name" required>
+                                    <input type="text" name="username" value="{{ old('username',$olt->username) }}" class="form-control" id="username" required>
                                     <div class="invalid-feedback">
                                        <h6>Please enter username</h6>
                                     </div>
@@ -71,7 +71,7 @@
                                 </div>
                                 <div class="mb-3">
                                     <label for="name" class="form-class">Model</label>
-                                    <input type="text" name="model" value="{{ old('model',$olt->model) }}" class="form-control" id="name" required>
+                                    <input type="text" name="model" value="{{ old('model',$olt->model) }}" class="form-control" id="model" required>
                                     <div class="invalid-feedback">
                                        <h6>Please enter model</h6>
                                     </div>
