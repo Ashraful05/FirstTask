@@ -40,7 +40,7 @@ class MikrotikController extends Controller
     {
         
          $this->validate($request, [
-            'name' => 'required|max:64',
+            'name' => 'required|string|max:64',
             'user_name' => 'required|string|max:64',
             'password' => 'required|string|max:64',
             'ip_address' => 'required|string|max:15',
@@ -91,12 +91,12 @@ class MikrotikController extends Controller
     public function update(Request $request, Mikrotik $mikrotik)
     {
         $data = $this->validate($request, [
-            'name' => 'required|max:64',
-            'user_name' => 'required|max:64',
-            'password' => 'required|max:64',
-            'ip_address' => 'required|max:15',
-            'ssh_port' => 'required',
-            'api_port' => 'required',
+            'name' => 'required|string|max:64',
+            'user_name' => 'required|string|max:64',
+            'password' => 'required|string|max:64',
+            'ip_address' => 'required|string|max:15',
+            'ssh_port' => 'required|numeric|max:65,535|min:1',
+            'api_port' => 'required|numeric|max:65,535|min:1',
         ]);
         $mikrotik->update($data);
         return redirect()->route('mikrotik.index')->with('message', 'Mikrotik Info updated successfully!!');

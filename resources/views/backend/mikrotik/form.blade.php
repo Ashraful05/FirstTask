@@ -20,9 +20,9 @@
                         <div class="card-header">
 
                             @if ($mikrotik->exists)
-                                <h5 class="text-center text-success">Edit</h5>
+                                <h5 class="text-center text-success">Mikrotik Edit</h5>
                             @else
-                                <h5 class="text-center text-success">Add</h5>
+                                <h5 class="text-center text-success">Mikrotik Add</h5>
                             @endif
 
                             @if ($errors->any())

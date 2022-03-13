@@ -49,28 +49,28 @@
                                     </div>
                                 </div>
                                 <div class="mb-3">
-                                    <label for="name" class="form-class">UserName</label>
+                                    <label for="username" class="form-class">UserName</label>
                                     <input type="text" name="username" value="{{ old('username',$olt->username) }}" class="form-control" id="username" required>
                                     <div class="invalid-feedback">
                                        <h6>Please enter username</h6>
                                     </div>
                                 </div>
                                 <div class="mb-3">
-                                    <label for="name" class="form-class">Password</label>
+                                    <label for="password" class="form-class">Password</label>
                                     <input type="password" name="password" value="{{ old('password',$olt->password) }}" class="form-control" id="password" required>
                                     <div class="invalid-feedback">
                                        <h6>Please enter password</h6>
                                     </div>
                                 </div>
                                 <div class="mb-3">
-                                    <label for="name" class="form-class">IP Address</label>
+                                    <label for="ip_address" class="form-class">IP Address</label>
                                     <input type="text" name="ip_address" value="{{ old('ip_address',$olt->ip_address) }}" class="form-control" id="ip_address" required>
                                     <div class="invalid-feedback">
                                        <h6>Please enter ip address</h6>
                                     </div>
                                 </div>
                                 <div class="mb-3">
-                                    <label for="name" class="form-class">Model</label>
+                                    <label for="model" class="form-class">Model</label>
                                     <input type="text" name="model" value="{{ old('model',$olt->model) }}" class="form-control" id="model" required>
                                     <div class="invalid-feedback">
                                        <h6>Please enter model</h6>
@@ -78,8 +78,8 @@
                                 </div>
 
                                 <div class="mb-3">
-                                    <label for="name" class="form-class">Port</label>
-                                    <input type="number" name="port" value="{{ old('port',$olt->model) }}" class="form-control" id="port" required>
+                                    <label for="port" class="form-class">Port</label>
+                                    <input type="number" name="port" value="{{ old('port',$olt->port) }}" class="form-control" id="port" required>
                                     <div class="invalid-feedback">
                                        <h6>Please enter port</h6>
                                     </div>
