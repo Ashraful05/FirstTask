@@ -42,24 +42,30 @@ class OltController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request,[
-           'name'=>'required|string|max:64',
+        $data = $this->validate($request,[
+            'name'=>'required|string|max:64',
             'username'=>'required|string|max:64',
             'password'=>'required|string|max:64',
             'ip_address'=>'required|string|max:64',
             'model'=>'required|string|max:128',
             'port'=>'required|numeric|max:11',
+            'olt_type_id'=> 'required|numeric|min:1',
+            'vendor_id' => 'required|numeric|min:1',
         ]);
-        $olt = new Olt();
-        $olt->name = $request->name;
-        $olt->username = $request->username;
-        $olt->password = $request->password;
-        $olt->model = $request->model;
-        $olt->port = $request->port;
-        $olt->ip_address = $request->ip_address;
-//        $olt->olts()->save($oltType);
-        $olt->save();
+
+        Olt::create($data);
         return redirect()->route('olt.index')->with('message','olt info saved!!!');
+
+//         $olt = new Olt();
+//         $olt->name = $request->name;
+//         $olt->username = $request->username;
+//         $olt->password = $request->password;
+//         $olt->model = $request->model;
+//         $olt->port = $request->port;
+//         $olt->ip_address = $request->ip_address;
+// //        $olt->olts()->save($oltType);
+//         $olt->save();
+        
 //        return $olt;
     }
 
@@ -82,7 +88,9 @@ class OltController extends Controller
      */
     public function edit(Olt $olt)
     {
-        return view('backend.olt.form',compact('olt'));
+        $oltTypes = OltType::all();
+        $vendors = Vendor::all();
+        return view('backend.olt.form',compact('olt','oltTypes','vendors'));
     }
 
     /**
@@ -95,12 +103,14 @@ class OltController extends Controller
     public function update(Request $request, Olt $olt)
     {
         $data = $this->validate($request,[
-            'name'=>'required|string|max:64',
-             'username'=>'required|max:64',
-             'password'=>'required|max:64',
-             'ip_address'=>'required|max:64',
-             'model'=>'required|max:128',
-             'port'=>'required|max:11',
+             'name'=>'required|string|max:64',
+             'username'=>'required|string|max:64',
+             'password'=>'required|string|max:64',
+             'ip_address'=>'required|string|max:64',
+             'model'=>'required|string|max:128',
+             'port'=>'required|numeric|max:11',
+             'olt_type_id'=> 'required|numeric|min:1',
+             'vendor_id' => 'required|numeric|min:1',
          ]);
          $olt->update($data);
          return redirect()->route('olt.index')->with('message','olt info updated!!!');

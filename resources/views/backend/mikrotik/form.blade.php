@@ -94,11 +94,11 @@
                                 </div>
                             </div>
                             <div class="mb-3">  
-                                <select class="form-select" aria-label="" required>
+                                <select class="form-select" aria-label="" name="router_type_id" id="router_type_id"  required>
                                     <label for="router_type" class="form-class">Router Type</label>
-                                    <option selected>Select a Router</option>
+                                    <option value="0" {{ $mikrotik->exists ?  '' : "selected"}}>Select Router Type</option>
                                     @foreach ($routerTypes as $routerType)
-                                        <option value="{{$routerType->id}}">{{$routerType->name}}</option>
+                                        <option value="{{$routerType->id}}"  @if($routerType->id == $mikrotik->router_type_id) selected @endif>{{$routerType->name}}</option>
                                     @endforeach
                                 </select>
                                 <div class="invalid-feedback">

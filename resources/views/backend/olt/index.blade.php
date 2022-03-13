@@ -31,6 +31,10 @@
                                         <tr>
                                             <th scope="col">#</th>
                                             <th scope="col">Name</th>
+                                            <th scope="col">IP Address</th>
+                                            <th scope="col">Model</th>
+                                            <th scope="col">Port</th>
+                                            <th scope="col">Status</th>
                                             <th scope="col" >Actions</th>
                                         </tr>
                                     </thead>
@@ -39,6 +43,10 @@
                                             <tr>
                                                 <th scope="row">{{ ++$row }}</th>
                                                 <td>{{ $olt->name }}</td>
+                                                <td>{{ $olt->ip_address}}}</td>
+                                                <td>{{ $olt->model }}</td>
+                                                <td>{{ $olt->port }}</td>
+                                                <td>{{ $olt->activationStatus->name }}</td>
                                                 <td>
                                                     <div class="d-flex justify-content-start">
                                                         <span class="me-2">

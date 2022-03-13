@@ -41,27 +41,16 @@ class MikrotikController extends Controller
     public function store(Request $request)
     {
         
-         $this->validate($request, [
+         $data = $this->validate($request, [
             'name' => 'required|string|max:64',
             'user_name' => 'required|string|max:64',
             'password' => 'required|string|max:64',
             'ip_address' => 'required|string|max:15',
             'ssh_port' => 'required|numeric|max:65535|min:1',
             'api_port' => 'required|numeric|max:65535|min:1',
+            'router_type_id' => 'required|numeric|min:1',
         ]);
-        
-        $mikrotik = new Mikrotik();
-        $mikrotik->name = $request->name;
-        $mikrotik->user_name = $request->user_name;
-        $mikrotik->password = $request->password;
-        $mikrotik->ssh_port = $request->ssh_port;
-        $mikrotik->api_port = $request->api_port;
-        $mikrotik->ip_address = $request->ip_address;
-
-        $mikrotik->save();
-
-
-
+        Mikrotik::create($data);
         return redirect()->route('mikrotik.index')->with('message', 'Mikrotik Info saved successfully!!');
     }
 
@@ -84,7 +73,8 @@ class MikrotikController extends Controller
      */
     public function edit(Mikrotik $mikrotik)
     {
-        return view('backend.mikrotik.form', compact('mikrotik'));
+        $routerTypes = RouterType::all();
+        return view('backend.mikrotik.form', compact('mikrotik','routerTypes'));
     }
 
     /**
@@ -103,7 +93,10 @@ class MikrotikController extends Controller
             'ip_address' => 'required|string|max:15',
             'ssh_port' => 'required|numeric|max:65535|min:1',
             'api_port' => 'required|numeric|max:65535|min:1',
+            'router_type_id' => 'required|numeric|min:1',
         ]);
+        // $data['router_type_id'] = $request->router_type_id;
+
         $mikrotik->update($data);
         return redirect()->route('mikrotik.index')->with('message', 'Mikrotik Info updated successfully!!');
     }

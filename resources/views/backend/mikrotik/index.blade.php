@@ -31,6 +31,10 @@
                                         <tr>
                                             <th scope="col">#</th>
                                             <th scope="col">Name</th>
+                                            <th scope="col">SSH Port</th>
+                                            <th scope="col">API Port</th>
+                                            <th scope="col">IP Address</th>
+                                            <th scope="col">Status</th>
                                             <th scope="col" >Actions</th>
                                         </tr>
                                     </thead>
@@ -39,6 +43,10 @@
                                             <tr>
                                                 <th scope="row">{{ ++$row }}</th>
                                                 <td>{{ $mikrotik->name }}</td>
+                                                <td>{{ $mikrotik->ssh_port }}</td>
+                                                <td>{{ $mikrotik->api_port }}</td>
+                                                <td>{{ $mikrotik->ip_address }}</td>
+                                                <td>{{ $mikrotik->status->name }}</td>
                                                 <td>
                                                     <div class="d-flex justify-content-start">
                                                         <span class="me-2">
@@ -67,9 +75,7 @@
     </section>
         
     <script>
-        
-
-        $(document).ready(function() {
+      $(document).ready(function() {
             $('#example').DataTable();
         } );
     </script>
