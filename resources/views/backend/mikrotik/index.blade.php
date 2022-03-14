@@ -19,7 +19,7 @@
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header">
-                            <h6 class="card-body-title text-center"><strong>olt</strong>
+                            <h6 class="card-body-title text-center"><strong>Mikrotik</strong>
                                 <a href="{{ route('mikrotik.create') }}" class="btn btn-primary mb-2" style="float: right;">Create</a>
                             </h6>
                         </div>

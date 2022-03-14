@@ -43,7 +43,7 @@
                                             <tr>
                                                 <th scope="row">{{ ++$row }}</th>
                                                 <td>{{ $olt->name }}</td>
-                                                <td>{{ $olt->ip_address}}}</td>
+                                                <td>{{ $olt->ip_address }}</td>
                                                 <td>{{ $olt->model }}</td>
                                                 <td>{{ $olt->port }}</td>
                                                 <td>{{ $olt->activationStatus->name }}</td>
