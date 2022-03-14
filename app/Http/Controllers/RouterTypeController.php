@@ -34,17 +34,12 @@ class RouterTypeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request,RouterType $routertype)
+    public function store(Request $request)
     {
         $data = $this->validate($request,[
            'name'=>'required|max:64'
         ]);
-        // dd($data);
-        // $routertype->save($data);
-        // dd($routertype);
-        $routertype = new RouterType();
-        $routertype->name = $request->name;
-        $routertype->save();
+        RouterType::create($data);
         return redirect()->route('routertype.index')->with('message','RouterType info added Successfully');
     }
 
