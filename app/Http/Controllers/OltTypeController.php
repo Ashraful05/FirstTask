@@ -37,12 +37,10 @@ class OltTypeController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request,[
+        $data = $this->validate($request,[
             'name'=>'required|string|max:32'
         ]);
-        $oltType = new OltType();
-        $oltType->name = $request->name;
-        $oltType->save();
+        OltType::create($data);
         return redirect()->route('olttype.index')->with('message','OLT Info Added Successfully');
     }
 
