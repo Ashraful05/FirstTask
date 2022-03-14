@@ -36,12 +36,10 @@ class VendorController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request,[
+        $data = $this->validate($request,[
            'name'=>'required|string|max:32'
         ]);
-        $vendor = new Vendor();
-        $vendor->name = $request->name;
-        $vendor->save();
+        Vendor::create($data);
         return redirect()->route('vendor.index')->with('message','vendor Info Added Successfully');
     }
 

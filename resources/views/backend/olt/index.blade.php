@@ -26,7 +26,7 @@
                         <div class="card-body">
 
                             <div class="table-wrapper">
-                                <table  id="example" class="table table-bordered table-striped" style="width:100%">
+                                <table  id="example" class="table table-bordered table-striped dt-responsive nowrap" style="width:100%">
                                     <thead>
                                         <tr>
                                             <th scope="col">#</th>
@@ -78,7 +78,9 @@
         
 
         $(document).ready(function() {
-            $('#example').DataTable();
+            $('#example').DataTable({
+              
+            });
         } );
     </script>
     
